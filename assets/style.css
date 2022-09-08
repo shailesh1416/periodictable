@@ -16,8 +16,9 @@
     height: 100vh;
     background-color: rgb(255, 255, 255);
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     overflow: auto;
+    overflow: scroll;
 }
 .right{
     width: 20%;
