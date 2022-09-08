@@ -3,7 +3,8 @@ const elements = [
         atomicNumber: 1,
         name: "Hydrogen",
         symbol: "H",
-        weight: 1.008
+        weight: 1.008,
+        image:'helium.jpg'
 
     },
     {
@@ -762,10 +763,59 @@ const b10 = document.getElementById('unknown')
 
 
 const elementbox = document.getElementsByClassName("atom")
+const api_url = "https://periodic-table-elements-info.herokuapp.com/element/atomicNumber/";
+  
+// Defining async function
+async function getapi(url) {
+    
+    // Storing response
+    const response = await fetch(url);
+    
+    // Storing data in form of JSON
+    var data = await response.json();
+     return data
+
+}
 
 for (i = 0; i <= elements.length-1; i++) {
     elementbox[i].innerHTML = "<span class='atomic-number'>"+elements[i].atomicNumber+"</span>"+elements[i].symbol+"<span class='atomic-name'>"+elements[i].name+"</span>";
+    xv = elements[i].atomicNumber
+    elementbox[i].addEventListener('click',async (e)=>{
+        // var eimg = document.getElementById('eimg');
+        var ename = document.getElementById('ename');
+        var number = document.getElementById('enumber');
+        var esymbol = document.getElementById('esymbol');
+        var atomicMass = document.getElementById('atomicMass');
+        var groupBlock = document.getElementById('groupBlock');
+        var yearDiscovered = document.getElementById('yearDiscovered');
+        var block = document.getElementById('block');
+        var period = document.getElementById('period');
+        var standardState = document.getElementById('standardState');
+
+        enumber = e.target.children[0].innerText
+        
+        // Storing response
+        const response = await fetch(api_url+enumber);
+        // Storing data in form of JSON
+        var data = await response.json();
+    
+        // eimg.innerHTML =  "<img src="+val[0].image+ " style='width:50%'>"
+        ename.innerHTML = data[0].name
+        number.innerHTML = enumber
+        esymbol.innerHTML = data[0].symbol
+        atomicMass.innerHTML = data[0].atomicMass
+        groupBlock.innerHTML = data[0].groupBlock
+        yearDiscovered.innerHTML = data[0].yearDiscovered
+        block.innerHTML = data[0].block
+        period.innerHTML =data[0].period
+        standardState.innerHTML = data[0].standardState
+
+
+
+
+    })
 }
+
 
 
 add(b1,'alkali-metal')
@@ -778,9 +828,3 @@ add(b7,'post-transition')
 add(b8,'lanthanide')
 add(b9,'actinide')
 add(b10,'unknown')
-
-
-
-
-
-

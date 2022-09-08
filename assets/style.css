@@ -12,17 +12,20 @@
 .left{
     padding: 5px;
     padding-top: 20px;
-    width: 100%;
+    width: 80%;
     height: 100vh;
     background-color: rgb(255, 255, 255);
     display: flex;
-    /* justify-content: center; */
-    overflow: scroll;
+    justify-content: center;
+    overflow: auto;
 }
 .right{
     width: 20%;
     height: 100vh;
-    background-color: rgb(0, 0, 0);
+    padding: 5px;
+    background-color: rgb(226, 226, 226);
+    color: white;
+    font-size: large;
 }
 
 
@@ -56,6 +59,7 @@
     /* border-color: rgb(255, 255, 255); */
     /* border-collapse: collapse; */
     position: relative;
+    cursor: pointer;
 }
 
 .atom:hover{
@@ -159,4 +163,17 @@ button:hover{
    background-color: #000;
    color: white;
    font-weight: bold;
+}
+
+.info{
+   margin: 10px 0px;
+   background-color: rgb(242, 248, 255);
+   padding :5px 15px;
+   color: rgb(0, 82, 176);
+   border-radius: 5px;
+}
+
+.info .title{
+    margin-bottom: 5px;
+    color:rgb(0, 0, 0)
 }
